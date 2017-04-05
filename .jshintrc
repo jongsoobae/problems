@@ -1,0 +1,17 @@
+{
+  "esversion": 6,
+  "undef": true,
+  "unused": true,
+  "varstmt": true,
+  "asi": true,
+  "boss": true,
+  "forin": true,
+  "noarg": true,
+  "nonew": true,
+  "strict": true,
+  "supernew": true,
+  "noyield": true,
+  "browser": true,
+  "node": true,
+  "jquery": true
+}
