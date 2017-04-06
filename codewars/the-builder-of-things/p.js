@@ -1,5 +1,3 @@
-
-
 class Thing {
   constructor(name) {
     this.name = name
@@ -80,7 +78,7 @@ var has_handler = {
 var can_handler = {
   get: function(t, n) {
     if(typeof(n) == 'string' && n!='inspect') {
-      
+
     }
   },
   set: function(t, n) {
