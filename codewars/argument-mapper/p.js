@@ -1,4 +1,5 @@
   function createArgumentMap(func) {
+    "use strict";
     if(func.length <=0) return [];
     var o={};
     var _arg = arguments;
@@ -8,11 +9,7 @@
     });
 
     return o;
-
-
-
     function getFnParamNames(fn){
       return fn.toString().match(/\(.*?\)/)[0].replace(/[()]/gi,'').replace(/\s/gi,'').split(',');
     }
   }
-  createArgumentMap(func1, 'v1', 'v2');

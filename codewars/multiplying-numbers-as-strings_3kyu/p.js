@@ -1,45 +1,27 @@
 function multiply(a, b) {
   "use strict";
-  let alist = parse_param(a);
-  let blist = parse_param(b);
+  if(!a) a = '0';
+  if(!b) b = '0';
 
-  let sum_dict = {};
-  alist.forEach(function(a_elem) {
-    blist.forEach(function(b_elem){
-      let z = a_elem.z + b_elem.z;
-      if(z in sum_dict) {
-        sum_dict[a_elem.z + b_elem.z] += a_elem.v * b_elem.v;
+  let i, j, k;
+
+  let mul = new Array(a.length+b.length+1).fill(0);
+  for( i = 0 ; i < a.length; i++ ) {
+    for( j = 0 ; j < b.length; j++ ) {
+      k = a.length + b.length-i-j;
+
+      let aa = parseInt(a[a.length-i-1]);
+      let bb = parseInt(b[b.length-j-1]);
+      mul[k] += aa * bb;
+
+      if(mul[k] > 9) {
+        mul[k-1] = mul[k-1] + Math.floor(mul[k]/10);
+        mul[k] = mul[k] % 10;
       }
-      else {
-        sum_dict[a_elem.z + b_elem.z] = a_elem.v * b_elem.v;
-      }
-    })
-  });
-
-  console.log(sum_dict);
-
-  for(var k in sum_dict) {
-    if(sum_dict.hasOwnProperty(k)) {
-      console.log(k);
     }
   }
-
-
-  function parse_param(st) {
-    let _list = [];
-    while (st) {
-      let x = st.substring(0,4);
-      st = st.replace(x, '');
-      _list.push({
-        'v': parseInt(x, 10),
-        'z': st.length
-      });
-    }
-
-    return _list;
-  }
-
+  return mul.join('').replace(/^0+/, '') || '0';
 }
 
-//console.log( '58608473622772837728372827'.split('') );
-multiply("58608473622728371728372827", "7586374672263726736374");
+console.log(multiply("1020303004875647366210", "2774537626200857473632627613"));
+console.log(multiply("", "2774537626200857473632627613"));
